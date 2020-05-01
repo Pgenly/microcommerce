@@ -21,33 +21,26 @@ public class ProductDaoImpl implements IProductDao {
 
     @Override
     public List<Product> findAll() {
-        Stream<Product> stream = products.stream();
-        stream.filter(x -> x.getPrice() > 400).forEach(System.out::println);
         return products;
     }
 
     @Override
     public Product findById(int id) {
-        Stream<Product> stream = products.stream();
-        Product product = stream.filter(x -> x.getId() == id).findFirst().orElse(new Product());
+        Stream<Product> streamProduct = products.stream();
+        Product product = streamProduct.filter(x -> x.getId() == id).findFirst().orElse(null);
         return product;
     }
 
     @Override
     public Product save(Product product) {
-        Stream<Product> stream = products.stream();
-        Product productInsert = stream.filter(x -> x.getId() != product.getId()).findFirst().orElse(null);
-        return productInsert;
-    }
+        if(product != null) {
+            Stream<Product> stream = products.stream();
+            Product productsInsert = stream.filter(x -> x.getId() != product.getId()).findFirst().orElse(null);
+            findAll().add(productsInsert);
 
-    @Override
-    public void displayProductInConsole() {
-        Stream<Product> stream = products.stream();
-        stream.forEach(System.out::println);
-    }
-
-    @Override
-    public List<Product> getListProducts() {
-        return products;
+            return productsInsert;
+        }
+        
+        return null;
     }
 }

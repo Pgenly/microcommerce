@@ -8,6 +8,8 @@ import com.ecommerce.microcommerce.model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +20,7 @@ public class ProductController {
     @Autowired
     IProductDao iProductDao;
 
-    @GetMapping(value = "/all/products")
+    @GetMapping(value = "/all/produits")
     public List<Product> listProduct() {
         return iProductDao.findAll();
     }
@@ -28,17 +30,9 @@ public class ProductController {
         return iProductDao.findById(id);
     }
 
-    @GetMapping(value = "/save")
-    public Product saveElement() {
-        Product product = new Product(20, "PC Gaming Razer", 2000);
+    @PostMapping(value = "/produit")
+    public Product addProduct(@RequestBody Product product) {
         iProductDao.save(product);
-
-        if(product != null) {
-            iProductDao.getListProducts().add(product);
-            iProductDao.displayProductInConsole();
-        }
-
-
         return product;
     }
 }

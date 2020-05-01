@@ -11,8 +11,4 @@ public interface IProductDao {
     public Product findById(int id);
 
     public Product save(Product product);
-
-    public void displayProductInConsole();
-
-    public List<Product> getListProducts();
 }
