@@ -32,7 +32,6 @@ public class ProductController {
 
     @PostMapping(value = "/produit")
     public Product addProduct(@RequestBody Product product) {
-        iProductDao.save(product);
-        return product;
+        return iProductDao.save(product);
     }
 }

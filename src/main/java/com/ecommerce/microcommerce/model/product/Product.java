@@ -9,6 +9,7 @@ public class Product {
     private String name;
     private int price;
 
+    //Mandatory for POST requests, for parse Object to JSON
     public Product() {
     }
 
