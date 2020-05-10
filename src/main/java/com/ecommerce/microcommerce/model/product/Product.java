@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 
 // Ignore attribute when return JsonObject
-@JsonIgnoreProperties(value = {"buyPrice", "provider"})
+@JsonIgnoreProperties(value = {"id", "buyPrice", "provider"})
 public class Product {
 
     private int id;
