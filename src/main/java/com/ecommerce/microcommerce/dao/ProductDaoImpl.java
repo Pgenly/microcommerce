@@ -2,7 +2,6 @@ package com.ecommerce.microcommerce.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import com.ecommerce.microcommerce.model.product.Product;
@@ -28,16 +27,15 @@ public class ProductDaoImpl implements IProductDao {
     @Override
     public Product findById(int id) {
         Stream<Product> streamProduct = products.stream();
-        Product product = streamProduct.filter(x -> x.getId() == id).findFirst().orElse(null);
-        return product;
+        return streamProduct.filter(x -> x.getId() == id).findFirst().orElse(null);
     }
 
     @Override
     public Product save(Product product) {
-        Stream<Product> stream = products.stream();
-        boolean hasPresent = stream.anyMatch(x -> x.getId() == product.getId());
+        Stream<Product> streamProducts = products.stream();
+        boolean hasExisting = streamProducts.anyMatch(x -> x.getId() == product.getId());
 
-        if(!hasPresent) {
+        if(!hasExisting) {
             findAll().add(product);
             return product;
         } else {
