@@ -11,12 +11,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductDaoImpl implements IProductDao {
 
-    public static List<Product> products = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
 
     static {
-        products.add(new Product(1, "Ordinateur Portable", 750));
-        products.add(new Product(2, "Nintendo Switch", 350));
-        products.add(new Product(3, "Ecran PC Gamer BenQ", 200));
+        products.add(new Product(1, "Ordinateur Portable", 750, 600, "Boulanger"));
+        products.add(new Product(2, "Nintendo Switch", 350, 200, "Amazon"));
+        products.add(new Product(3, "Ecran PC Gamer BenQ", 200, 140, "LDLC"));
     }
 
     @Override

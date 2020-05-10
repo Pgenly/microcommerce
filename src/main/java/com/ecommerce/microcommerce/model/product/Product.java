@@ -1,22 +1,31 @@
 package com.ecommerce.microcommerce.model.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Product
  */
+
+// Ignore attribute when return JsonObject
+@JsonIgnoreProperties(value = {"buyPrice", "provider"})
 public class Product {
-    
+
     private int id;
     private String name;
     private int price;
+    private int buyPrice;
+    private String provider;
 
     //Mandatory for POST requests, for parse Object to JSON
     public Product() {
     }
 
-    public Product(int id, String name, int price) {
+    public Product(int id, String name, int price, int buyPrice, String provider) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.buyPrice = buyPrice;
+        this.provider = provider;
     }
     
     public int getId() {
@@ -41,6 +50,22 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getBuyPrice() {
+        return this.buyPrice;
+    }
+
+    public void setBuyPrice(int buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public String getProvider() {
+        return this.provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     @Override
