@@ -43,7 +43,7 @@ public class ProductController {
      * @return response a response entity code ("201 Created" Or "204 No Content")
      */
     public ResponseEntity<Void> createdResponseEntity(Product newProduct) {
-        // Return response when the object is null "Error 204 Not Content"
+        // Return response when the object is null (Error 204 Not Content)
         if(newProduct == null) {
             return ResponseEntity.noContent().build();
         } 
@@ -53,9 +53,9 @@ public class ProductController {
             .fromCurrentRequest()                   // Get a current request (http:localhost:8080)
             .path("/{id}")                          // The id of a new object created
             .buildAndExpand(newProduct.getId())     // Assign a value to parameter on the previous line
-            .toUri();                               // Convert to URI with parameter define on the previous lines for the header response
+            .toUri();                               // Convert to URI with parameter define on the previous lines 
         
-        // Return response "201 created"
+        // Return response API "201 created"
         return ResponseEntity.created(location).build();
     }
 }
