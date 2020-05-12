@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ecommerce.microcommerce.dao.IProductDao;
 import com.ecommerce.microcommerce.model.product.Product;
+import com.ecommerce.microcommerce.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +20,21 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class ProductController {
 
     @Autowired
-    IProductDao iProductDao;
+    ProductService productService;
 
     @GetMapping(value = "/produits")
     public List<Product> findAll() {
-        return iProductDao.findAll();
+        return productService.findAll();
     }
 
     @GetMapping(value = "/{id}")
     public Product findById(@PathVariable int id) {
-        return iProductDao.findById(id);
+        return productService.findById(id);
     }
 
     @PostMapping(value = "/produit")
     public ResponseEntity<Void> save(@RequestBody Product product) {
-        Product newProduct = iProductDao.save(product);
+        Product newProduct = productService.save(product);
         return createdResponseEntity(newProduct);
     }
 

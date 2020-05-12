@@ -1,4 +1,4 @@
-package com.ecommerce.microcommerce.dao;
+/* package com.ecommerce.microcommerce.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,4 +42,4 @@ public class ProductDaoImpl implements IProductDao {
             return null;
         }
     }
-}
+} */
