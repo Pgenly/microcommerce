@@ -3,6 +3,7 @@ package com.ecommerce.microcommerce.model.product;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // Ignore attribute when return JsonObject
 @Entity
+@Table(name = "product")
 @JsonIgnoreProperties(value = {"id", "buyPrice", "provider"})
 public class Product {
 

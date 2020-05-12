@@ -38,6 +38,21 @@ public class ProductController {
         return createdResponseEntity(newProduct);
     }
 
+    @GetMapping(value = "/produits/superieur/{limitPrice}")
+    public List<Product> findByPriceGreaterThan(@PathVariable int limitPrice) {
+        return productService.findByPriceGreaterThan(limitPrice);
+    }
+
+    @GetMapping(value = "/produits/inferieur/{limitPrice}")
+    public List<Product> findByPriceInferiorThan(@PathVariable int limitPrice) {
+        return productService.findByPriceInferiorThan(limitPrice);
+    }
+
+    @GetMapping(value = "produit/egal/{price}")
+    public Product findByPriceThan(@PathVariable int price) {
+        return productService.findByPriceThan(price);
+    }
+
     /**
      * Build a response Entity according to value of parameters "newProduct"
      * @param newProduct is a product on which we build a the answer

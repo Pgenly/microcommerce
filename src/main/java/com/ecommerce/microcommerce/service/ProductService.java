@@ -28,4 +28,16 @@ public class ProductService {
     public Product save(Product product) {
         return iProductDao.save(product);
     }
+
+    public List<Product> findByPriceGreaterThan(int limitPrice) {
+        return iProductDao.findByPriceGreaterThan(limitPrice);
+    }
+
+	public List<Product> findByPriceInferiorThan(int limitPrice) {
+		return iProductDao.findByPriceInferiorThan(limitPrice);
+    }
+    
+    public Product findByPriceThan(int price) {
+        return iProductDao.findByPriceThan(price);
+    }
 }
