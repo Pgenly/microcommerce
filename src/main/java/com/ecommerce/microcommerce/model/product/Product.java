@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.ecommerce.microcommerce.interfaceentity.EntityInterface;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -15,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "product")
 @JsonIgnoreProperties(value = {"id", "buyPrice", "provider"})
-public class Product {
+public class Product implements EntityInterface {
 
     @Id
     @GeneratedValue
@@ -85,5 +86,4 @@ public class Product {
             ", price='" + getPrice() + "'" +
             "}";
     }
-    
 }
